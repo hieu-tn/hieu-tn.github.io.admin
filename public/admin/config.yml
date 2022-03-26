@@ -9,6 +9,54 @@ collections:
   - name: pages
     label: Pages
     files:
+      - name: metadata
+        label: Site Metadata
+        file: contents/metadata.md
+        fields:
+          - name: siteURL
+            label: Site URL
+            widget: string
+            required: false
+          - name: title
+            label: Title
+            widget: string
+            required: false
+          - name: description
+            label: Description
+            widget: string
+            required: false
+          - name: author
+            label: Author
+            widget: string
+            required: false
+          - name: keyworks
+            label: Keyworks
+            widget: string
+            required: false
+          - name: email
+            label: Email
+            widget: string
+            required: false
+          - name: tel
+            label: Tel
+            widget: string
+            required: false
+          - name: map
+            label: Map
+            widget: string
+            required: false
+          - name: pdf
+            label: PDF
+            widget: string
+            required: false
+          - name: github
+            label: Github
+            widget: string
+            required: false
+          - name: linkedin
+            label: LinkedIn
+            widget: string
+            required: false
       - name: home
         label: Home
         file: contents/home.md
@@ -58,31 +106,15 @@ collections:
             label: Template Key
             widget: hidden
             default: contact
-          - name: cv
-            label: CV
-            widget: string
-            required: false
           - name: email
             label: Email
             widget: string
-          - name: linkEmail
-            label: Link Email
-            widget: string
-            required: false
           - name: location
             label: Location
             widget: string
-          - name: linkLocation
-            label: Link Location
-            widget: string
-            required: false
           - name: phone
             label: Phone
             widget: string
-          - name: linkPhone
-            label: Link Phone
-            widget: string
-            required: false
 
   - name: skills
     label: Skills

@@ -1,9 +1,11 @@
 import type { NextPage } from 'next'
 import Layout from '@core/Layout'
-import { attributes as homeAttribute } from '@contents/home.md'
+import { attributes as homeAttributes } from '@contents/home.md'
 import { attributes as contactAttributes } from '@contents/contact.md'
+import { attributes as expAttributes } from '@contents/experience/*.md'
 
 const Home: NextPage = () => {
+  console.log(expAttributes)
   return (
     <>
       <Layout>
@@ -22,7 +24,27 @@ const Home: NextPage = () => {
                 <p>My works</p>
               </div>
               <div className="grids gird-body">
-
+                <h3 className={`title`}>Experience</h3>
+                <div className={`timeline`}>
+                  {experience && experience.map(({node: exp}) => (
+                    <div className={`timeline-item`} key={exp.frontmatter.period}>
+                      <div className={`left-part`}>
+                        <p className={`timeline__period`}>{exp.frontmatter.period}</p>
+                        <p className={`timeline__place`}><a href={exp.frontmatter.url} target={`_blank`}
+                                                            rel={`noopener noreferrer`}>{exp.frontmatter.place}</a></p>
+                      </div>
+                      <div className={`divider`}></div>
+                      <div className={`right-part`}>
+                        <h4 className={`timeline__title`}>{exp.frontmatter.title}</h4>
+                        <ul>
+                          {exp.frontmatter.jobDescription && exp.frontmatter.jobDescription.map(item => (
+                            <li key={item.point}>{item.point}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
