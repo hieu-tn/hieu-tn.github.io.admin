@@ -100,6 +100,7 @@ collections:
       - name: date
         label: Publish Date
         widget: date
+        format: 'YYYY-MM-DD'
         required: false
       - name: category
         label: Category
@@ -126,6 +127,7 @@ collections:
       - name: date
         label: Publish Date
         widget: date
+        format: 'YYYY-MM-DD'
         required: false
       - name: duration
         label: Duration
@@ -167,6 +169,7 @@ collections:
       - name: date
         label: Publish Date
         widget: date
+        format: 'YYYY-MM-DD'
         required: false
       - name: duration
         label: Duration
