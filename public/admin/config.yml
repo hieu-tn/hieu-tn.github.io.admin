@@ -181,7 +181,7 @@ collections:
         widget: string
         required: false
       - name: members
-        label: Duration
+        label: Members
         widget: number
         required: false
       - name: stacks
