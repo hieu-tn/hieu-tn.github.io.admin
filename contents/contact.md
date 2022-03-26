@@ -1,4 +1,5 @@
 ---
+cv: https://hieu-tn.github.io/hieu-tn.github.io/Hieu_TN_resume.pdf
 email: vayu411@gmail.com
 linkEmail: mailto:vayu411@gmail.com
 location: HCMC, Vietnam
