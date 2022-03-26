@@ -1,0 +1,39 @@
+$columns: 12;
+$breakpoints: (
+'xs': (min-width: 36em),    // 576px
+'sm': (min-width: 48em),    // 768px
+'md': (min-width: 62em),    // 992px
+'lg': (min-width: 75em),    // 1200px
+'xl': (min-width: 81.25rem),    // 1300px
+);
+$max-width: 68em;
+
+
+$base-font-face: 'BrownPro', sans-serif;
+$base-font-size: 1rem;
+$base-line-height: 150%;
+$base-color: #D5D5D5;
+
+$font--consolas: 'Consolas', sans-serif;
+
+$colors: (
+  'white': #ffffff,
+  'black': #000000,
+  'mine-shaft': #222222,
+  'mine-shaft1': #333333,
+  'tundora': #444444,
+  'emperor': #555555,
+  'dove-gray': #666666,
+  'gray': #888888,
+  'dusty-gray': #999999,
+  'alto': #D5D5D5,
+  'wild-sand': #F5F5F5,
+  'silver': #BBBBBB,
+  //'spring-wood': #FDFDFD,
+  'blizzard-blue': #A3E0EB,
+  'picton-blue': #36A2EB,
+  'boston-blue': #4095BF,
+  'shalimar': #FFFBC0,
+  'persian-green': #00AD9E,
+  'robin-s-egg-blue': #00C2B2,
+);

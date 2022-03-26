@@ -58,15 +58,31 @@ collections:
             label: Template Key
             widget: hidden
             default: contact
+          - name: cv
+            label: CV
+            widget: string
+            required: false
           - name: email
             label: Email
             widget: string
+          - name: linkEmail
+            label: Link Email
+            widget: string
+            required: false
           - name: location
             label: Location
             widget: string
+          - name: linkLocation
+            label: Link Location
+            widget: string
+            required: false
           - name: phone
             label: Phone
             widget: string
+          - name: linkPhone
+            label: Link Phone
+            widget: string
+            required: false
 
   - name: skills
     label: Skills

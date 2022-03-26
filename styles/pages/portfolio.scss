@@ -1,0 +1,14 @@
+@import '../main';
+
+body.page--portfolio {
+  .site-content {
+    a {
+      color: get-color('shalimar');
+      text-decoration: underline;
+
+      &:hover {
+        color: get-color('picton-blue');
+      }
+    }
+  }
+}

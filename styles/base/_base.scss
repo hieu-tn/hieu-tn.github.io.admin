@@ -1,0 +1,18 @@
+*, *:before, *:after, html {
+  box-sizing: border-box;
+}
+
+html, body {
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  color: $base-color;
+  font-family: $base-font-face;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  font-weight: 300;
+}

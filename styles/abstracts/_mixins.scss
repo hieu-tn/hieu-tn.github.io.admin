@@ -1,0 +1,80 @@
+/// Responsive breakpoint manager
+/// @access public
+/// @param {String} $breakpoint - Breakpoint
+/// @requires $breakpoints
+@mixin respond-to($breakpoint) {
+  $raw-query: map-get($breakpoints, $breakpoint);
+
+  @if $raw-query {
+    $query: if(
+      type-of($raw-query) == 'string',
+      unquote($raw-query),
+      inspect($raw-query)
+    );
+
+    @media #{$query} {
+      @content;
+    }
+  } @else {
+    @error 'No value found for `#{$breakpoint}`. '
+      + 'Please make sure it is defined in `$breakpoints` map.';
+  }
+}
+
+@mixin size($width, $height: $width) {
+  height: $height;
+  width: $width;
+}
+
+@mixin grid-get($cols) {
+  @if $cols > $columns {
+    @error 'Cannot make the grids with `#{$cols}`. '
+      + 'The maximum grids are #{$columns}.';
+  }
+
+  @if $cols < 0 {
+    @error 'Not allow negative number with `#{$cols}`. '
+      + 'The minimum grid is 0 and maximum grid is 12.';
+  }
+
+  flex-basis: $cols * 100% / 12;
+  max-width: $cols * 100% / 12;
+}
+
+@mixin grid-push($cols) {
+  @if $cols > $columns {
+    @error 'Cannot push the grids with `#{$cols}`. '
+      + 'The maximum grids are #{$columns}.';
+  }
+
+  @if $cols < 0 {
+    @error 'Not allow negative number with `#{$cols}`. '
+      + 'The minimum grid is 0 and maximum grid is 12.';
+  }
+
+  margin-left: $cols * 100% / 12;
+}
+
+@mixin grid-pull($cols) {
+  @if $cols > $columns {
+    @error 'Cannot pull the grids with `#{$cols}`. '
+      + 'The maximum grids are #{$columns}.';
+  }
+
+  @if $cols < 0 {
+    @error 'Not allow negative number with `#{$cols}`. '
+      + 'The minimum grid is 0 and maximum grid is 12.';
+  }
+
+  margin-right: $cols * 100% / 12;
+}
+
+@mixin grid-center() {
+  display: block;
+  margin: {
+    left: auto;
+    right: auto;
+  };
+  float: none;
+  clear: both;
+}

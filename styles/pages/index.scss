@@ -1,0 +1,344 @@
+@import '../main';
+
+.page-home {
+  .grids {
+    @include grid-get(12);
+
+    &.grid-headline {
+      border-bottom: .05rem solid get-color('dusty-gray');
+    }
+
+    &.grid-description {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .section-overviews {
+    padding-top: 0;
+
+    @include respond-to(md) {
+      padding-top: 2rem;
+      position: relative;
+      overflow-y: hidden;
+    }
+
+    .grids {
+      @include grid-get(12);
+
+      &.grid-avatar {
+        @include respond-to(sm) {
+          text-align: center;
+        }
+
+        @include respond-to(md) {
+          @include grid-get(5);
+        }
+
+        .avatar-container {
+          margin: 0 -1rem;
+
+          @include respond-to(xs) {
+            width: 40%;
+            margin: 0 auto;
+          }
+
+          @include respond-to(md) {
+            position: absolute;
+            top: 0; left: 0;
+            height: 100%;
+            overflow: hidden;
+          }
+        }
+
+        .avatar {
+          //max-width: none;
+          //width: calc(100% + 2rem);
+
+          @include respond-to(md) {
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translate(-50%, 0);
+            height: 100%;
+            max-width: none;
+          }
+
+          @include respond-to(xl) {
+            height: auto;
+            max-width: 100%;
+          }
+        }
+      }
+
+      &.grid-content {
+        padding-top: 1.5rem;
+
+        @include respond-to(md) {
+          @include grid-get(7);
+          padding-top: 0;
+        }
+      }
+    }
+  }
+
+  .section-resume {
+    .timeline-item {
+      position: relative;
+      padding-bottom: 1.5rem;
+
+      @include respond-to(sm) {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .left-part {
+        padding-left: 2rem;
+
+        @include respond-to(sm) {
+          text-align: right;
+          width: 30%;
+          padding: {
+            right: 2rem;
+            left: 0;
+          }
+        }
+      }
+
+      .right-part {
+        padding-left: 2rem;
+        @include respond-to(sm) {
+          width: 70%;
+        }
+      }
+
+      .divider {
+        background: get-color('dove-gray');
+        position: absolute;
+        top: 0; bottom: 0; left: 0;
+        width: .15rem;
+
+        @include respond-to(sm) {
+          left: 30%;
+        }
+
+        &::after {
+          content: '';
+          display: block;
+          background: get-color('black');
+          width: .7rem; height: .7rem;
+          border-radius: 50%;
+          border: .1rem solid get-color('boston-blue');
+          margin: {
+            top: .55rem;
+            left: -.3rem;
+          }
+        }
+      }
+
+      .timeline__title, .timeline__period {
+        @extend .cl--wild-sand;
+      }
+
+      .timeline__period {
+        @extend .text-italic;
+        margin-bottom: 0;
+        font-size: .9rem;
+
+        @include respond-to(sm) {
+          margin-bottom: .5rem;
+        }
+
+        @include respond-to(md) {
+          margin-bottom: 1rem;
+        }
+      }
+
+      .timeline__title {
+        margin-bottom: .5rem;
+
+        @include respond-to(md) {
+          margin-bottom: 1rem;
+        }
+      }
+
+      .timeline__place {
+        a {
+          text-decoration: underline;
+        }
+      }
+
+      p, ul, ol {
+        margin-bottom: .5rem;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .divider-space {
+      height: 1rem;
+    }
+
+    .skills-info {
+      @include respond-to(md) {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+
+    .skill-item {
+      margin-bottom: 1rem;
+
+      @include respond-to(md) {
+        width: 48%;
+        margin-left: 4%;
+      }
+
+      &:nth-child(odd) {
+        margin-left: 0;
+      }
+
+      .skill__title {
+        margin-bottom: 0;
+      }
+
+      .skill__description {
+        //font-size: .9rem;
+      }
+
+      .skill__percentage {
+        border: .05rem solid get-color('boston-blue');
+        border-radius: .5rem;
+        height: .6rem;
+        position: relative;
+
+        .active {
+          position: absolute;
+          top: 50%; left: .2rem;
+          transform: translate(0, -50%);
+          height: .2rem;
+          background: get-color('blizzard-blue');
+          border-radius: .5rem;
+        }
+      }
+    }
+  }
+
+  .section-portfolios {
+    .portfolios {
+      @include respond-to(sm) {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+
+    .portfolio-item {
+      margin-bottom: 1rem;
+
+      @include respond-to(sm) {
+        width: 49%;
+        margin-left: 2%;
+      }
+
+      &:nth-child(2n + 1) {
+        @include respond-to(sm) {
+          margin-left: 0;
+        }
+      }
+
+      p {
+        margin-bottom: 0;
+      }
+
+      .portfolio__title {
+        @extend .cl--blizzard-blue;
+        margin-bottom: 0;
+
+        &:hover {
+          color: get-color('picton-blue');
+        }
+      }
+
+      .portfolio__period {
+        font-size: .9rem;
+      }
+    }
+  }
+
+  .section-blog {
+    .post {
+      margin-bottom: 1rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      a {
+        color: get-color('blizzard-blue');
+        text-decoration: underline;
+
+        &:hover {
+          color: get-color('picton-blue');
+        }
+      }
+
+      .post__title {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .section-contact {
+    word-break: break-all;
+
+    .download-cv {
+      padding: .8rem 1.5rem;
+      border: .1rem solid get-color('picton-blue');
+      color: get-color('white');
+
+      &:hover {
+        @include respond-to(md) {
+          background: get-color('picton-blue');
+        }
+      }
+    }
+
+    .contact-item {
+      margin-bottom: 1rem;
+
+      @include respond-to(sm) {
+        @include grid-get(6);
+      }
+
+      @include respond-to(lg) {
+        @include grid-get(3);
+      }
+
+      .contact-item__inner {
+        @extend .bg--tundora;
+        width: 100%;
+        padding: 1rem .5rem;
+        border: .05rem solid get-color('emperor');
+
+        &:focus {
+          background: get-color('dove-gray');
+          color: get-color('white');
+        }
+
+        &:hover {
+          @include respond-to(md) {
+            transform: translate(0, -.5rem);
+            background: get-color('dove-gray');
+            color: get-color('white');
+          }
+        }
+
+        i {
+          display: block;
+          font-size: 2rem;
+          margin-bottom: .5rem;
+        }
+      }
+    }
+  }
+}

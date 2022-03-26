@@ -1,0 +1,23 @@
+@import '../main';
+
+.single-post {
+  .post-content {
+    a {
+      color: get-color('shalimar');
+      text-decoration: underline;
+
+      &:hover {
+        color: get-color('picton-blue');
+      }
+    }
+
+    ul,ol {
+      padding-left: 2rem;
+
+      li {
+        display: list-item;
+        padding-left: 0;
+      }
+    }
+  }
+}

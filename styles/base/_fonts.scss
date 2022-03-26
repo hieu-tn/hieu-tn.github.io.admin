@@ -1,0 +1,49 @@
+@font-face {
+  font-family: 'BrownPro';
+  src: local('BrownPro'),
+  url('/fonts/BrownPro-Light.woff2') format('woff2'),
+  url('/fonts/BrownPro-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: auto;
+}
+
+//@font-face {
+//  font-family: 'BrownPro';
+//  src: local('BrownPro'),
+//  url('../fonts/BrownPro-Regular.woff2') format('woff2'),
+//  url('../fonts/BrownPro-Regular.woff') format('woff');
+//  font-weight: normal;
+//  font-style: normal;
+//  font-display: auto;
+//}
+
+@font-face {
+  font-family: 'BrownPro';
+  src: local('BrownPro'),
+  url('/fonts/BrownPro-Bold.woff2') format('woff2'),
+  url('/fonts/BrownPro-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: auto;
+}
+
+@font-face {
+  font-family: 'Consolas';
+  src: local('Consolas'),
+  url('/fonts/Consolas.woff2') format('woff2'),
+  url('/fonts/Consolas.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: auto;
+}
+
+//@font-face {
+//  font-family: 'Underwood1913';
+//  src: local('Underwood1913'),
+//  url('../fonts/Underwood1913Normal.woff2') format('woff2'),
+//  url('../fonts/Underwood1913Normal.woff') format('woff');
+//  font-weight: normal;
+//  font-style: normal;
+//  font-display: auto;
+//}

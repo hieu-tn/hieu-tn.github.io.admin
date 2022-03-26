@@ -12,8 +12,8 @@ const Header = () => {
           <a onClick={() => moveTo('resume')}>Resume</a>
           <a onClick={() => moveTo('portfolio')}>Portfolio</a>
           <a onClick={() => moveTo('contact')}>Contact</a>
-          <a href="linkedin url">linkedin</a>
-          <a href="github url">github</a>
+          <a href="linkedin url"></a>
+          <a href="github url"></a>
         </nav>
       </div>
     </header>

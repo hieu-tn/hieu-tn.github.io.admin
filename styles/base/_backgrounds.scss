@@ -1,0 +1,25 @@
+.bg-- {
+  &white {
+    background: get-color('white');
+  }
+
+  &.black {
+    background: get-color('black');
+  }
+
+  &mine-shaft {
+    background: get-color('mine-shaft');
+  }
+
+  &mine-shaft1 {
+    background: get-color('mine-shaft1');
+  }
+
+  &tundora {
+    background: get-color('tundora');
+  }
+
+  &emperor {
+    background: get-color('emperor');
+  }
+}
