@@ -115,7 +115,7 @@ collections:
     folder: contents/experience
     slug: "{{slug}}"
     create: true
-#    identifier_field: place
+    identifier_field: place
     editor:
       preview: true
     fields:
@@ -156,7 +156,7 @@ collections:
     folder: contents/portfolio
     slug: "{{slug}}"
     create: true
-#    identifier_field: place
+    identifier_field: title
     editor:
       preview: true
     fields:
