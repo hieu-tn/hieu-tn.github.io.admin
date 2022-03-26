@@ -1,0 +1,174 @@
+backend:
+  #  name: git-gateway # prod
+  name: test-repo # local
+  branch: master # Branch to update (optional; defaults to master)
+media_folder: public/images
+public_folder: images
+collections:
+
+  - name: pages
+    label: Pages
+    files:
+      - name: home
+        label: Home
+        file: contents/home.md
+        fields:
+          - name: templateKey
+            label: Template Key
+            widget: hidden
+            default: home
+          - name: designation
+            label: Designation
+            widget: string
+          - name: overview
+            label: Overview
+            widget: text
+          - name: summary
+            label: Summary
+            widget: list
+            fields:
+              - name: point
+                label: Point
+                widget: string
+          - name: certificates
+            label: Certificates
+            widget: list
+            fields:
+              - name: duration
+                label: Duration
+                widget: string
+                required: false
+              - name: place
+                label: Place
+                widget: string
+                required: false
+              - name: url
+                label: URL
+                widget: string
+                required: false
+              - name: description
+                label: Description
+                widget: string
+                required: false
+      - name: contact
+        label: Contact
+        file: contents/contact.md
+        fields:
+          - name: templateKey
+            label: Template Key
+            widget: hidden
+            default: contact
+          - name: email
+            label: Email
+            widget: string
+          - name: location
+            label: Location
+            widget: string
+          - name: phone
+            label: Phone
+            widget: string
+
+  - name: skills
+    label: Skills
+    folder: contents/skills
+    slug: "{{slug}}"
+    create: true
+#    identifier_field: category
+    editor:
+      preview: true
+    fields:
+      - name: templateKey
+        label: Template Key
+        widget: hidden
+        default: skill
+      - name: date
+        label: Publish Date
+        widget: date
+        required: false
+      - name: category
+        label: Category
+        widget: string
+        required: false
+      - name: items
+        label: Items
+        widget: string
+        required: false
+
+  - name: experience
+    label: Experience
+    folder: contents/experience
+    slug: "{{slug}}"
+    create: true
+#    identifier_field: place
+    editor:
+      preview: true
+    fields:
+      - name: templateKey
+        label: Template Key
+        widget: hidden
+        default: experience
+      - name: date
+        label: Publish Date
+        widget: date
+        required: false
+      - name: duration
+        label: Duration
+        widget: string
+        required: false
+      - name: place
+        label: Place
+        widget: string
+        required: false
+      - name: url
+        label: URL
+        widget: string
+        required: false
+      - name: designation
+        label: Designation
+        widget: string
+        required: false
+      - name: jobDescription
+        label: Job Description
+        widget: list
+        fields:
+          - name: point
+            label: Point
+            widget: string
+
+  - name: portfolio
+    label: Portfolio
+    folder: contents/portfolio
+    slug: "{{slug}}"
+    create: true
+#    identifier_field: place
+    editor:
+      preview: true
+    fields:
+      - name: templateKey
+        label: Template Key
+        widget: hidden
+        default: portfolio
+      - name: date
+        label: Publish Date
+        widget: date
+        required: false
+      - name: duration
+        label: Duration
+        widget: string
+        required: false
+      - name: title
+        label: Title
+        widget: string
+        required: false
+      - name: url
+        label: URL
+        widget: string
+        required: false
+      - name: members
+        label: Duration
+        widget: number
+        required: false
+      - name: stacks
+        label: Stacks
+        widget: string
+        required: false
