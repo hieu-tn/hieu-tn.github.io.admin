@@ -89,7 +89,7 @@ collections:
     folder: contents/skills
     slug: "{{slug}}"
     create: true
-#    identifier_field: category
+    identifier_field: category
     editor:
       preview: true
     fields:
@@ -127,12 +127,11 @@ collections:
         label: Publish Date
         widget: date
         required: false
-      - name: duration
-        label: Duration
-        widget: string
-        required: false
       - name: place
         label: Place
+        widget: string
+      - name: duration
+        label: Duration
         widget: string
         required: false
       - name: url
@@ -168,12 +167,11 @@ collections:
         label: Publish Date
         widget: date
         required: false
-      - name: duration
-        label: Duration
-        widget: string
-        required: false
       - name: title
         label: Title
+        widget: string
+      - name: duration
+        label: Duration
         widget: string
         required: false
       - name: url
