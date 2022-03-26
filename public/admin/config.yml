@@ -29,8 +29,8 @@ collections:
             label: Author
             widget: string
             required: false
-          - name: keyworks
-            label: Keyworks
+          - name: keywords
+            label: Keywords
             widget: string
             required: false
           - name: email
