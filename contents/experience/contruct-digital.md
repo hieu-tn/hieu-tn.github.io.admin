@@ -1,8 +1,8 @@
 ---
 templateKey: experience
-date: 2022-03-26T22:00:01.815Z
-duration: Aug 2016 - Jan 2020
+date: 2016-08-16T22:00:01.815Z
 place: Contruct Digital
+duration: Aug 2016 - Jan 2020
 url: https://www.constructdigital.com
 designation: Full-stack Web Developer
 jobDescription:
