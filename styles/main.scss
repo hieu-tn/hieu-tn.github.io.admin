@@ -7,11 +7,12 @@
 @import 'base/fonts';
 @import 'base/icons';
 @import 'base/keyframes';
+@import 'base/reset';
 @import 'base/base';
 @import 'base/backgrounds';
 @import 'base/colors';
 @import 'base/typography';
 
-@import 'layout/grids';
-@import 'layout/header';
-@import 'layout/footer';
+@import 'components/header';
+
+@import 'pages/home';

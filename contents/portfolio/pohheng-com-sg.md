@@ -7,4 +7,3 @@ duration: May 2019 - Jul 2019
 members: 1
 stacks: 'WordPress, VueJS, JQuery'
 ---
-

@@ -7,6 +7,3 @@ duration: Jul 2019 - Mar 2021
 members: 1
 stacks: 'WordPress, VueJS, JQuery, Docker'
 ---
-Responsibilities:
-
-* implement both frontend and backend

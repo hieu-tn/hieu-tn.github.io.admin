@@ -7,4 +7,3 @@ duration: Oct 2016 - May 2017
 members: 1
 stacks: 'HubSpot, JQuery'
 ---
-
