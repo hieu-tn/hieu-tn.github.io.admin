@@ -1,6 +1,6 @@
 ---
 templateKey: skill
-date: 2022-03-27T18:32:08.777Z
+date: 2017-12-31T18:32:08.777Z
 category: Database
 items: MySQL, Postgres
 ---
