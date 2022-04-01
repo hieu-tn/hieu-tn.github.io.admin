@@ -7,5 +7,6 @@ summary: []
 certificates:
   - duration: Graduated
     place: Ho Chi Minh City University of Technology
-    description: Computer Science
+    description: ""
+    title: Computer Science
 ---
