@@ -17,7 +17,8 @@ export const getSiblings = (el: any, filter = null) => {
   el = el.parentNode.firstChild
   do {
     // only God knows
-    if (!filter || filter(el)) siblings.push(el)
+    // if (!filter || filter(el)) siblings.push(el)
+    siblings.push(el)
     el = el.nextSibling
   } while (el)
   return siblings
