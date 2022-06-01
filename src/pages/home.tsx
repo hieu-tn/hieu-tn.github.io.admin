@@ -42,7 +42,7 @@ const Home: NextPage<IHomeProps> = (data) => {
     <>
       <section id="about" className={`${styles.section} ${styles.sectionAbout}`}>
         <div className={styles.heroImage}>
-          <Image src="/images/personel.png" layout="responsive" width="957" height="1194" />
+          <Image src="/images/personel.png" layout="responsive" width="957" height="1194" alt="Hero Image" />
         </div>
         <div className={`container ${styles.container}`}>
           <div className="row">
