@@ -71,11 +71,6 @@ collections:
           - name: overview
             label: Overview
             widget: text
-          - name: heroImage
-            label: Hero Image
-            widget: image
-            allow_multiple: false
-            required: false
           - name: summary
             label: Summary
             widget: list

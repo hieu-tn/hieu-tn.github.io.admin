@@ -4,7 +4,6 @@ import { IPageProps } from '@models/common.models'
 export interface IHomeProps extends IPageProps {
   designation: string
   overview: string
-  heroImage: string
   certificates: ICertificate[]
   summary: ISummary[]
   contact: {

@@ -27,7 +27,53 @@
 }
 
 .sectionAbout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 
+  @include respond-to(xs) {
+    position: relative;
+    min-height: 80vh;
+  }
+
+  @include respond-to(md) {
+    min-height: 70vh;
+  }
+
+  .container {
+    margin: auto;
+  }
+
+  .heroImage {
+    width: 100%;
+    max-width: 400px;
+    max-height: 499px;
+
+    @include respond-to(xs) {
+      position: absolute;
+      right: 35%;
+      bottom: 0;
+    }
+
+    @include respond-to(sm) {
+      right: 50%;
+    }
+  }
+
+  .gridsContent {
+    margin-top: 2em;
+    width: 100%;
+
+    @include respond-to(xs) {
+      @include grid-push(7);
+      @include grid-get(5);
+    }
+
+    @include respond-to(sm) {
+      @include grid-push(6);
+      @include grid-get(6);
+    }
+  }
 }
 
 .sectionResume {

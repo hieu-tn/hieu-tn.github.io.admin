@@ -11,7 +11,6 @@ import styles from '@styles/pages/home.module.scss'
 import { attributes as homeAttributes } from '@contents/home.md'
 // @ts-ignore
 import { attributes as contactAttributes } from '@contents/contact.md'
-import { markdownToHtml } from '@lib/utils.lib'
 
 
 export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
@@ -19,7 +18,6 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
     props: {
       designation: homeAttributes.designation || null,
       overview: homeAttributes.overview || null,
-      heroImage: homeAttributes.heroImage || null,
       certificates: homeAttributes.certificates || null,
       summary: homeAttributes.summary || null,
       contact: {
@@ -43,7 +41,18 @@ const Home: NextPage<IHomeProps> = (data) => {
   return (
     <>
       <section id="about" className={`${styles.section} ${styles.sectionAbout}`}>
-        <h2>about</h2>
+        <div className={styles.heroImage}>
+          <Image src="/images/personel.png" layout="responsive" width="957" height="1194" />
+        </div>
+        <div className={`container ${styles.container}`}>
+          <div className="row">
+            <div className={`grids ${styles.grids} ${styles.gridsContent}`}>
+              <h1>{data.metadata.author}</h1>
+              <h3>{data.designation}</h3>
+              <p>{data.overview}</p>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section id="resume" className={`${styles.section} ${styles.sectionResume}`}>
@@ -138,8 +147,12 @@ const Home: NextPage<IHomeProps> = (data) => {
               {sideProjects && sideProjects.map((p: ISideProjectsResponse) => (
                 <div key={p.slug}>
                   <p><strong>{p.frontmatter.title}</strong></p>
-                  <div dangerouslySetInnerHTML={{__html: p.content}} />
-                  <p>Available at: <a href={p.frontmatter.url}>{p.frontmatter.url}</a></p>
+                  <div dangerouslySetInnerHTML={{__html: p.content}}/>
+                  <p>Available at:&nbsp;
+                    <a href={p.frontmatter.url} target="_blank" rel="noreferrer">
+                      {p.frontmatter.url}
+                    </a>
+                  </p>
                 </div>
               ))}
 
