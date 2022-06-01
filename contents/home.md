@@ -1,7 +1,7 @@
 ---
 designation: Software Engineer
 overview: A growing Software Engineer enthusiastics about web life cycle and how
-  it works with over 5 years experience in website development.
+  it works.
 heroImage: ""
 summary:
   - point: 5+ years of experience in software engineering of web products
