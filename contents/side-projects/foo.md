@@ -7,3 +7,5 @@ description: |-
   * foo
   * bar
 ---
+* foo
+* bar
