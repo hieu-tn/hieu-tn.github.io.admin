@@ -227,3 +227,32 @@ collections:
         label: Stacks
         widget: string
         required: false
+
+  - name: sideProjects
+    label: Side Projects
+    folder: contents/side-projects
+    slug: "{{slug}}"
+    create: true
+    identifier_field: title
+    editor:
+      preview: true
+    fields:
+      - name: templateKey
+        label: Template Key
+        widget: hidden
+        default: sideProject
+      - name: date
+        label: Publish Date
+        widget: date
+        required: false
+      - name: title
+        label: Title
+        widget: string
+      - name: url
+        label: URL
+        widget: string
+        required: false
+      - name: body
+        label: Content
+        widget: markdown
+        required: false

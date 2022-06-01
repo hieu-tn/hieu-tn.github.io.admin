@@ -6,17 +6,15 @@ import { ILayoutProps } from '@models/common.models'
 
 const Layout = ({metadata, children}: ILayoutProps) => {
   return (
-    <div id="page" className="site">
-      <div className="site__inner">
-        <Header metadata={metadata}/>
+    <>
+      <Header metadata={metadata}/>
 
-        <main className="site-content">
-          {children}
-        </main>
+      <main id="site-content">
+        {children}
+      </main>
 
-        <Footer/>
-      </div>
-    </div>
+      <Footer/>
+    </>
   )
 }
 

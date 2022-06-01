@@ -23,11 +23,21 @@ export default class MyDocument extends Document<IDocument> {
     return initialProps
   }
 
+  makeClasses(): string {
+    const {page} = this.props.__NEXT_DATA__
+    let classes = 'page page-'
+    switch (page) {
+      case '/home':
+        classes += 'home'
+    }
+    return classes
+  }
+
   render() {
     return (
       <Html>
         <Head/>
-        <body>
+        <body className={this.makeClasses()}>
           <Main/>
           <NextScript/>
         </body>

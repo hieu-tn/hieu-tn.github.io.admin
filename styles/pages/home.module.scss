@@ -1,0 +1,207 @@
+@import 'styles/abstracts/variables';
+@import 'styles/abstracts/mixins';
+@import 'styles/abstracts/functions';
+
+.section {
+  padding: 6rem 0;
+
+  &:nth-child(even) {
+    background: get-color('gallery');
+  }
+}
+
+.grids {
+  @include grid-get(12);
+
+  &.gridHeadline {
+    text-transform: uppercase;
+    border-bottom: .1rem solid get-color('chantilly');
+  }
+
+  &.gridDescription {
+    margin-bottom: 4rem;
+  }
+
+  &.gridBody {
+  }
+}
+
+.sectionAbout {
+
+}
+
+.sectionResume {
+  .dividerSpace {
+    height: 4rem;
+  }
+
+  .title {
+    display: inline-block;
+    text-transform: capitalize;
+    border-bottom: .2rem solid get-color('electric-violet');
+  }
+
+  .timelineItem {
+    position: relative;
+    padding-bottom: 3rem;
+
+    @include respond-to(sm) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .leftPart {
+      padding-left: 2rem;
+
+      @include respond-to(sm) {
+        text-align: right;
+        width: 30%;
+        padding: {
+          right: 2rem;
+          left: 0;
+        }
+      }
+    }
+
+    .rightPart {
+      padding-left: 2rem;
+      @include respond-to(sm) {
+        width: 70%;
+      }
+    }
+
+    .divider {
+      background: get-color('chantilly');
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: .3rem;
+      opacity: .7;
+
+      @include respond-to(sm) {
+        left: 30%;
+      }
+
+      &::after {
+        content: '';
+        display: block;
+        background: get-color('carnation');
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        //border: .1rem solid get-color('black');
+        margin: {
+          top: .55rem;
+          left: -.35rem;
+        }
+      }
+    }
+
+    .timelineTitle, .timelineDuration {
+      //@extend .cl--wild-sand;
+    }
+
+    .timelineDuration {
+      font-style: italic;
+      margin-bottom: 0;
+      font-size: 1.5rem;
+
+      @include respond-to(sm) {
+        margin-bottom: .5rem;
+      }
+
+      @include respond-to(md) {
+        margin-bottom: 1rem;
+      }
+    }
+
+    .timelineTitle {
+      margin-bottom: .5rem;
+
+      @include respond-to(md) {
+        margin-bottom: 1rem;
+      }
+    }
+
+    .timelinePlace {
+      a {
+        text-decoration: underline;
+      }
+    }
+
+    p, ul, ol {
+      margin-bottom: .5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.sectionPortfolio {
+  .portfolios {
+    @include respond-to(sm) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  .portfolioItem {
+    margin-bottom: 3rem;
+
+    @include respond-to(sm) {
+      width: 49%;
+      margin-left: 2%;
+    }
+
+    &:nth-child(2n + 1) {
+      @include respond-to(sm) {
+        margin-left: 0;
+      }
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+
+    .portfolioTitle {
+      margin-bottom: 0;
+    }
+
+    .portfolioDuration {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.sectionContact {
+  min-height: 70vh;
+
+  .helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+
+  a {
+    display: inline-block;
+    text-align: center;
+    border: .1rem solid get-color('persian-indigo');
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin: 10px 20px;
+
+    &:hover {
+      color: get-color('white');
+      background: get-color('persian-indigo');
+    }
+
+    i {
+      vertical-align: middle;
+      font-size: 2rem;
+    }
+  }
+}

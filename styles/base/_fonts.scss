@@ -8,15 +8,15 @@
   font-display: auto;
 }
 
-//@font-face {
-//  font-family: 'BrownPro';
-//  src: local('BrownPro'),
-//  url('../fonts/BrownPro-Regular.woff2') format('woff2'),
-//  url('../fonts/BrownPro-Regular.woff') format('woff');
-//  font-weight: normal;
-//  font-style: normal;
-//  font-display: auto;
-//}
+@font-face {
+  font-family: 'BrownPro';
+  src: local('BrownPro'),
+  url('/fonts/BrownPro-Regular.woff2') format('woff2'),
+  url('/fonts/BrownPro-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: auto;
+}
 
 @font-face {
   font-family: 'BrownPro';

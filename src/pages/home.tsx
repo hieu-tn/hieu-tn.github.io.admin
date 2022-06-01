@@ -1,15 +1,17 @@
-import type { GetStaticProps, GetStaticPropsContext, GetStaticPropsResult, NextPage } from 'next'
+import type { GetStaticProps, GetStaticPropsContext, NextPage } from 'next'
+import Image from 'next/image'
 import useSwr from 'swr'
 import { IExperienceResponse } from '@models/experience.api.models'
 import { ISkillsResponse } from '@models/skills.api.models'
 import { IPortfoliosResponse } from '@models/portfolios.api.models'
+import { ISideProjectsResponse } from '@models/projects.api.models'
 import { ICertificate, IHomeProps, ISummary } from '@models/home.page.models'
+import styles from '@styles/pages/home.module.scss'
 // @ts-ignore
 import { attributes as homeAttributes } from '@contents/home.md'
 // @ts-ignore
 import { attributes as contactAttributes } from '@contents/contact.md'
-import { useEffect } from 'react'
-import { activeMenu, scrollToTarget } from '@lib/utils.lib'
+import { markdownToHtml } from '@lib/utils.lib'
 
 
 export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
@@ -30,96 +32,41 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
 }
 
 const Home: NextPage<IHomeProps> = (data) => {
-  const experience: IExperienceResponse[] = getExperience()
-  const skills: ISkillsResponse[] = getSkills()
-  const portfolios: IPortfoliosResponse[] = getPortfolios()
+  const experience: IExperienceResponse[] = useGetExperience()
+  const skills: ISkillsResponse[] = useGetSkills()
+  const portfolios: IPortfoliosResponse[] = useGetPortfolios()
+  const sideProjects: ISideProjectsResponse[] = useGetSideProjects()
 
   const gap = new Date(Date.now() - new Date(process.env.CAREER_BEGINNING || '').valueOf())
   const exp = Math.abs(gap.getUTCFullYear() - 1970)
 
   return (
-    <div className="page-home">
-      <section className="section section-overviews bg--mine-shaft1" id="about" data-target="#about">
-        <div className="container">
-          <div className="row">
-            <div className="grids grid-avatar">
-              <div className="avatar-container">
-                <img className="avatar" src="images/logo.jpg" alt="logo"/>
-              </div>
-            </div>
-            <div className="grids grid-content">
-              <p>{data.designation}</p>
-              <h1>{data.metadata.author}</h1>
-              <p>{data.overview}</p>
-              {data.summary && data.summary.map((s: ISummary) => (
-                <p key={s.point}>- {s.point}</p>
-              ))}
-            </div>
-          </div>
-        </div>
+    <>
+      <section id="about" className={`${styles.section} ${styles.sectionAbout}`}>
+        <h2>about</h2>
       </section>
 
-      <section className="section section-resume" id="resume" data-target="#resume">
+      <section id="resume" className={`${styles.section} ${styles.sectionResume}`}>
         <div className="container">
           <div className="row">
-            <div className="grids grid-headline">
-              <h1>Resume</h1>
+            <div className={`grids ${styles.grids} ${styles.gridHeadline}`}>
+              <h2>Resume</h2>
             </div>
-            <div className="grids grid-description text-right cl--silver">
-              <p>{exp} Years of Experience</p>
+            <div className={`grids ${styles.grids} ${styles.gridDescription} text-right`}>
+              <p>{exp}+ Years of Experience</p>
             </div>
-            <div className="grids grid-content">
-              <h3 className="title">Experience</h3>
-              <div className="timeline">
-                {experience && experience.map((exp: IExperienceResponse) => (
-                  <div className="timeline-item" key={exp.frontmatter.duration}>
-                    <div className="left-part">
-                      <p className="timeline__duration">{exp.frontmatter.duration}</p>
-                      <p className="timeline__place">
-                        <a href={exp.frontmatter.url} target="_blank" rel="noopener noreferrer">
-                          {exp.frontmatter.place}
-                        </a>
-                      </p>
-                    </div>
-                    <div className="divider"></div>
-                    <div className="right-part">
-                      <h4 className="timeline__title">{exp.frontmatter.place}</h4>
-                      <ul>
-                        {exp.frontmatter.jobDescription && exp.frontmatter.jobDescription.map(item => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+            <div className={`grids ${styles.grids} ${styles.gridBody}`}>
+
+              <h3 className={styles.title}>Summary</h3>
+              <div>
+                {data.summary && data.summary.map((s: ISummary) => (
+                  <p key={s.point}>- {s.point}</p>
                 ))}
               </div>
 
-              <div className="divider-space"></div>
+              <div className={styles.dividerSpace}></div>
 
-              <h3 className="title">education</h3>
-              <div className="timeline">
-                {data.certificates && data.certificates.map((cert: ICertificate) => (
-                  <div className="timeline-item" key={cert.duration}>
-                    <div className="left-part">
-                      <p className="timeline__duration">{cert.duration}</p>
-                      <p className="timeline__place">
-                        <a href={cert.url} target="_blank" rel="noopener noreferrer">
-                          {cert.place}
-                        </a>
-                      </p>
-                    </div>
-                    <div className="divider"></div>
-                    <div className="right-part">
-                      <h4 className="timeline__title">{cert.title}</h4>
-                      <p>{cert.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="divider-space"></div>
-
-              <h3 className="title">Skills</h3>
+              <h3 className={styles.title}>Skills</h3>
               <div className="skills-info">
                 {skills && skills.map((skill: ISkillsResponse) => (
                   <p key={skill.slug}><i>- {skill.frontmatter.category}:</i> {skill.frontmatter.items}</p>
@@ -134,32 +81,94 @@ const Home: NextPage<IHomeProps> = (data) => {
                 {/*  </div>*/}
                 {/*))}*/}
               </div>
+
+              <div className={styles.dividerSpace}></div>
+
+              <h3 className={styles.title}>Experience</h3>
+              <div>
+                {experience && experience.map((exp: IExperienceResponse) => (
+                  <div className={styles.timelineItem} key={exp.frontmatter.duration}>
+                    <div className={styles.leftPart}>
+                      <p className={styles.timelineDuration}>{exp.frontmatter.duration}</p>
+                      <p className={styles.timelinePlace}>
+                        <a href={exp.frontmatter.url} target="_blank" rel="noreferrer">
+                          {exp.frontmatter.place}
+                        </a>
+                      </p>
+                    </div>
+                    <div className={styles.divider}></div>
+                    <div className={styles.rightPart}>
+                      <h4 className={styles.timelineTitle}>{exp.frontmatter.designation}</h4>
+                      <ul>
+                        {exp.frontmatter.jobDescription && exp.frontmatter.jobDescription.map(item => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className={styles.dividerSpace}></div>
+
+              <h3 className={styles.title}>education</h3>
+              <div>
+                {data.certificates && data.certificates.map((cert: ICertificate) => (
+                  <div className={styles.timelineItem} key={cert.duration}>
+                    <div className={styles.leftPart}>
+                      <p className={styles.timelineDuration}>{cert.duration}</p>
+                      <p className={styles.timelinePlace}>
+                        <a href={cert.url} target="_blank" rel="noreferrer">
+                          {cert.place}
+                        </a>
+                      </p>
+                    </div>
+                    <div className={styles.divider}></div>
+                    <div className={styles.rightPart}>
+                      <h4 className={styles.timelineTitle}>{cert.title}</h4>
+                      <p>{cert.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className={styles.dividerSpace}></div>
+
+              <h3 className={styles.title}>side projects</h3>
+              {sideProjects && sideProjects.map((p: ISideProjectsResponse) => (
+                <div key={p.slug}>
+                  <p><strong>{p.frontmatter.title}</strong></p>
+                  <div dangerouslySetInnerHTML={{__html: p.content}} />
+                  <p>Available at: <a href={p.frontmatter.url}>{p.frontmatter.url}</a></p>
+                </div>
+              ))}
+
             </div>
           </div>
         </div>
       </section>
 
-      <section className="section section-portfolios bg--mine-shaft1" id="portfolio" data-target="#portfolio">
+      <section id="portfolio" className={`${styles.section} ${styles.sectionPortfolio}`}>
         <div className="container">
           <div className="row">
-            <div className="grids grid-headline">
-              <h1>Portfolio</h1>
+            <div className={`grids ${styles.grids} ${styles.gridHeadline}`}>
+              <h2>Portfolio</h2>
             </div>
-            <div className="grids grid-description text-right cl--silver">
+            <div className={`grids ${styles.grids} ${styles.gridDescription} text-right`}>
               <p>My Works</p>
             </div>
-            <div className="grids grid-content">
-              <div className="portfolios">
+            <div className={`grids ${styles.grids} ${styles.gridBody}`}>
+              <div className={styles.portfolios}>
                 {portfolios && portfolios.map((portfolio: IPortfoliosResponse) => (
-                  <div className="portfolio-item" key={portfolio.frontmatter.title}>
-                    <h4 className="portfolio__title">
-                      <a href={portfolio.frontmatter.url} target="_blank" rel="noopener noreferrer">
+                  <div className={styles.portfolioItem} key={portfolio.frontmatter.title}>
+                    <h4 className={styles.portfolioTitle}>
+                      <a href={portfolio.frontmatter.url} target="_blank" rel="noreferrer">
                         {portfolio.frontmatter.title}
                       </a>
                     </h4>
-                    <p className="portfolio__duration"><i>{portfolio.frontmatter.duration}</i></p>
-                    <p className="portfolio__members"><i>Team members:</i> {portfolio.frontmatter.members}</p>
-                    <p className="portfolio__stacks"><i>Stacks:</i> {portfolio.frontmatter.stacks}</p>
+                    <p className={styles.portfolioDuration}><i>{portfolio.frontmatter.duration}</i></p>
+                    <p><i>Team members:</i> {portfolio.frontmatter.members}</p>
+                    <p><i>Stacks:</i> {portfolio.frontmatter.stacks}</p>
                     {/*<PostContent content={portfolio.html} className="portfolio__description" />*/}
                   </div>
                 ))}
@@ -169,54 +178,41 @@ const Home: NextPage<IHomeProps> = (data) => {
         </div>
       </section>
 
-      <section className="section section-contact" id="contact" data-target="#contact">
+      <section id="contact" className={`${styles.section} ${styles.sectionContact}`}>
         <div className="container">
           <div className="row">
-            <div className="grids grid-headline">
-              <h1>Contact</h1>
+            <div className={`grids ${styles.grids} ${styles.gridHeadline}`}>
+              <h2>Contact</h2>
             </div>
-            <div className="grids grid-description text-right cl--silver">
+            <div className={`grids ${styles.grids} ${styles.gridDescription} text-right`}>
               <p>Get in Touch</p>
             </div>
-            <div className="grids grid-content">
+            <div className={`grids ${styles.grids} ${styles.gridBody}`}>
               <p>Thank you for watching.</p>
-              <p>If you are interested, please do not hesitate to get a brief of my information</p>
-              {/*<p><button className="download-cv" onClick={downloadPDF.bind(this, PDF)}>Download CV</button></p>*/}
-              <p><a className="download-cv" href={data.metadata.pdf} target="_blank">Download CV</a></p>
-              <p>or contact me via</p>
-              <div className="row">
-                <div className="grids contact-item text-center">
-                  <a className="contact-item__inner" href={'tel:' + data.metadata.tel}>
-                    <i className=" icon-bullhorn"></i>
-                    <h4>{data.contact.phone}</h4>
-                  </a>
-                </div>
-                <div className=" grids contact-item text-center">
-                  <a className=" contact-item__inner" href={data.metadata.map}>
-                    <i className="icon-map-pin-stroke"></i>
-                    <h4>{data.contact.location}</h4>
-                  </a>
-                </div>
-                <div className=" grids contact-item text-center">
-                  <a className=" contact-item__inner" href={'mailto:' + data.metadata.email}>
-                    <i className=" icon-paperplane">
-                    </i>
-                    <h4>{data.contact.email}</h4>
-                  </a>
-                </div>
-                <div className=" grids contact-item text-center">
-                  <a className=" contact-item__inner" href={'mailto:' + data.metadata.email}>
-                    <i className=" icon-power">
-                    </i>
-                    <h4>Freelance Available</h4>
-                  </a>
-                </div>
+              <p>If you are interested:</p>
+              <div>
+                <a href={data.metadata.github} target="_blank" rel="noreferrer">
+                  <span className={styles.helper}></span>
+                  <i className="icon-github"></i>
+                </a>
+                <a href={data.metadata.linkedin} target="_blank" rel="noreferrer">
+                  <span className={styles.helper}></span>
+                  <i className="icon-linkedin"></i>
+                </a>
+                <a href={`mailto:${data.metadata.email}`} target="_blank" rel="noreferrer">
+                  <span className={styles.helper}></span>
+                  <i className="icon-plane"></i>
+                </a>
+                <a href={data.metadata.map} target="_blank" rel="noreferrer">
+                  <span className={styles.helper}></span>
+                  <i className="icon-location"></i>
+                </a>
               </div>
             </div>
           </div>
         </div>
       </section>
-    </div>
+    </>
   )
 }
 
@@ -224,7 +220,7 @@ export default Home
 
 const fetcher = (url: string) => fetch(url).then((res: Response) => res.json())
 
-const getExperience = (): IExperienceResponse[] => {
+const useGetExperience = (): IExperienceResponse[] => {
   const {data, error} = useSwr('/api/experience', fetcher)
   if (error) {
     console.log(error)
@@ -233,7 +229,7 @@ const getExperience = (): IExperienceResponse[] => {
   return data
 }
 
-const getSkills = (): ISkillsResponse[] => {
+const useGetSkills = (): ISkillsResponse[] => {
   const {data, error} = useSwr('/api/skills', fetcher)
   if (error) {
     console.log(error)
@@ -243,8 +239,17 @@ const getSkills = (): ISkillsResponse[] => {
 }
 
 
-const getPortfolios = (): IPortfoliosResponse[] => {
+const useGetPortfolios = (): IPortfoliosResponse[] => {
   const {data, error} = useSwr('/api/portfolios', fetcher)
+  if (error) {
+    console.log(error)
+    return error
+  }
+  return data
+}
+
+const useGetSideProjects = (): ISideProjectsResponse[] => {
+  const {data, error} = useSwr('/api/side-projects', fetcher)
   if (error) {
     console.log(error)
     return error
