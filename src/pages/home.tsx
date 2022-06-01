@@ -11,6 +11,7 @@ import styles from '@styles/pages/home.module.scss'
 import { attributes as homeAttributes } from '@contents/home.md'
 // @ts-ignore
 import { attributes as contactAttributes } from '@contents/contact.md'
+import { customLoader } from '@lib/utils.lib'
 
 
 export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
@@ -42,7 +43,7 @@ const Home: NextPage<IHomeProps> = (data) => {
     <>
       <section id="about" className={`${styles.section} ${styles.sectionAbout}`}>
         <div className={styles.heroImage}>
-          <Image src="/images/personel.png" layout="responsive" width="957" height="1194" alt="Hero Image" />
+          <Image loader={customLoader} src="/images/personel.png" layout="responsive" width="957" height="1194" alt="Hero Image" />
         </div>
         <div className={`container ${styles.container}`}>
           <div className="row">

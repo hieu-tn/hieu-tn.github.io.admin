@@ -33,6 +33,15 @@ const nextConfig = {
     }
     return config
   },
+  images: {
+    loader: 'custom',
+    minimumCacheTTL: 60 * 60,
+  },
+  experimental: {
+    images: {
+      layoutRaw: true,
+    },
+  },
 }
 
 module.exports = nextConfig

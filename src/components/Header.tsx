@@ -1,8 +1,7 @@
 import React, { SyntheticEvent, useEffect, useState } from 'react'
-import Link from 'next/link'
 import Image from 'next/image'
 import { IHeaderProps } from '@models/common.models'
-import { scrollToTarget } from '@lib/utils.lib'
+import { customLoader, scrollToTarget } from '@lib/utils.lib'
 import styles from '@styles/components/header.module.scss'
 
 
@@ -70,7 +69,7 @@ const Header = ({metadata}: IHeaderProps) => {
     <>
       <header id="site-header" className={`${styles.header} ${isMenuMobileOpen ? styles.active : ''}`}>
         <div className={`container ${styles.container}`}>
-          <Image src="/images/logo.jpg" alt="logo" layout="fixed" width="40" height="40" />
+          <Image loader={customLoader} src="/images/logo.jpg" alt="logo" layout="fixed" width="40" height="40" />
           <div className={styles.hamburger} onClick={menuToggle}>
             <i className="icon-menu"></i>
           </div>
