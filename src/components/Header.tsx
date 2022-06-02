@@ -69,15 +69,31 @@ const Header = ({metadata}: IHeaderProps) => {
     <>
       <header id="site-header" className={`${styles.header} ${isMenuMobileOpen ? styles.active : ''}`}>
         <div className={`container ${styles.container}`}>
-          <Image loader={customLoader} src="/images/logo.jpg" alt="logo" layout="fixed" width="40" height="40" />
+          <Image
+            loader={customLoader}
+            src="/images/logo.jpg"
+            alt="logo"
+            layout="fixed"
+            width="40"
+            height="40"
+            unoptimized={true}
+            priority={true}/>
           <div className={styles.hamburger} onClick={menuToggle}>
             <i className="icon-menu"></i>
           </div>
           <nav className={`${styles.navigation} ${isMenuMobileOpen ? styles.active : ''}`}>
-            <a className={activeMenu == 'about' ? styles.active : ''} onClick={e => handleClick(e, 'about')}>It&apos;s me</a>
-            <a className={activeMenu == 'resume' ? styles.active : ''} onClick={e => handleClick(e, 'resume')}>Resume</a>
-            <a className={activeMenu == 'portfolio' ? styles.active : ''} onClick={e => handleClick(e, 'portfolio')}>Portfolio</a>
-            <a className={activeMenu == 'contact' ? styles.active : ''} onClick={e => handleClick(e, 'contact')}>Contact</a>
+            <a className={activeMenu == 'about' ? styles.active : ''} onClick={e => handleClick(e, 'about')}>
+              It&apos;s me
+            </a>
+            <a className={activeMenu == 'resume' ? styles.active : ''} onClick={e => handleClick(e, 'resume')}>
+              Resume
+            </a>
+            <a className={activeMenu == 'portfolio' ? styles.active : ''} onClick={e => handleClick(e, 'portfolio')}>
+              Portfolio
+            </a>
+            <a className={activeMenu == 'contact' ? styles.active : ''} onClick={e => handleClick(e, 'contact')}>
+              Contact
+            </a>
           </nav>
         </div>
       </header>

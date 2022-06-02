@@ -5,14 +5,14 @@ const nextConfig = {
   },
   reactStrictMode: true,
   poweredByHeader: false,
-  async rewrites() {
-    return [
-      {
-        source: '/',
-        destination: '/home',
-      },
-    ]
-  },
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: '/',
+  //       destination: '/home',
+  //     },
+  //   ]
+  // },
   webpack5: true,
   webpack: (config, {isServer}) => {
     config.module.rules.push(

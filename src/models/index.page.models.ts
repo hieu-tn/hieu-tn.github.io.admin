@@ -1,4 +1,8 @@
 import { IPageProps } from '@models/common.models'
+import { IExperience } from '@models/experience.models'
+import { ISkill } from '@models/skills.models'
+import { IPortfolio } from '@models/portfolios.models'
+import { ISideProject } from '@models/projects.models'
 
 
 export interface IHomeProps extends IPageProps {
@@ -10,7 +14,11 @@ export interface IHomeProps extends IPageProps {
     email: string
     phone: string
     location: string
-  }
+  },
+  experience: IExperience[]
+  skills: ISkill[]
+  portfolios: IPortfolio[]
+  sideProjects: ISideProject[]
 }
 
 export interface ICertificate {

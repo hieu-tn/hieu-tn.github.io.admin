@@ -1,20 +1,31 @@
 import type { GetStaticProps, GetStaticPropsContext, NextPage } from 'next'
 import Image from 'next/image'
-import useSwr from 'swr'
-import { IExperienceResponse } from '@models/experience.api.models'
-import { ISkillsResponse } from '@models/skills.api.models'
-import { IPortfoliosResponse } from '@models/portfolios.api.models'
-import { ISideProjectsResponse } from '@models/projects.api.models'
-import { ICertificate, IHomeProps, ISummary } from '@models/home.page.models'
+import { IExperience } from '@models/experience.models'
+import { ISkill } from '@models/skills.models'
+import { IPortfolio } from '@models/portfolios.models'
+import { ISideProject } from '@models/projects.models'
+import { ICertificate, IHomeProps, ISummary } from '@models/index.page.models'
 import styles from '@styles/pages/home.module.scss'
+import { customLoader, markdownToHtml } from '@lib/utils.lib'
+import { getAllExperience } from '@lib/experience.lib'
+import { getAllSkills } from '@lib/skills.lib'
+import { getAllPortfolios } from '@lib/portfolios.lib'
+import { getAllSideProjects } from '@lib/projects.lib'
 // @ts-ignore
 import { attributes as homeAttributes } from '@contents/home.md'
 // @ts-ignore
 import { attributes as contactAttributes } from '@contents/contact.md'
-import { customLoader } from '@lib/utils.lib'
 
 
 export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
+  let experience: IExperience[] = getAllExperience()
+  const skills: ISkill[] = getAllSkills()
+  const portfolios: IPortfolio[] = getAllPortfolios()
+  const sideProjects: ISideProject[] = getAllSideProjects()
+  for (const item of sideProjects) {
+    item.content = await markdownToHtml(item.content)
+  }
+
   return {
     props: {
       designation: homeAttributes.designation || null,
@@ -26,15 +37,15 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
         phone: contactAttributes.phone || null,
         location: contactAttributes.location || null,
       },
+      experience: experience,
+      skills: skills,
+      portfolios: portfolios,
+      sideProjects: sideProjects,
     }
   }
 }
 
-const Home: NextPage<IHomeProps> = (data) => {
-  const experience: IExperienceResponse[] = useGetExperience()
-  const skills: ISkillsResponse[] = useGetSkills()
-  const portfolios: IPortfoliosResponse[] = useGetPortfolios()
-  const sideProjects: ISideProjectsResponse[] = useGetSideProjects()
+const Index: NextPage<IHomeProps> = (data) => {
 
   const gap = new Date(Date.now() - new Date(process.env.CAREER_BEGINNING || '').valueOf())
   const exp = Math.abs(gap.getUTCFullYear() - 1970)
@@ -43,7 +54,15 @@ const Home: NextPage<IHomeProps> = (data) => {
     <>
       <section id="about" className={`${styles.section} ${styles.sectionAbout}`}>
         <div className={styles.heroImage}>
-          <Image loader={customLoader} src="/images/personel.png" layout="responsive" width="957" height="1194" alt="Hero Image" />
+          <Image
+            loader={customLoader}
+            src="/images/personel.png"
+            layout="responsive"
+            width="957"
+            height="1194"
+            alt="Hero Image"
+            unoptimized={true}
+            priority={true}/>
         </div>
         <div className={`container ${styles.container}`}>
           <div className="row">
@@ -78,7 +97,7 @@ const Home: NextPage<IHomeProps> = (data) => {
 
               <h3 className={styles.title}>Skills</h3>
               <div className="skills-info">
-                {skills && skills.map((skill: ISkillsResponse) => (
+                {data.skills && data.skills.map((skill: ISkill) => (
                   <p key={skill.slug}><i>- {skill.frontmatter.category}:</i> {skill.frontmatter.items}</p>
                 ))}
                 {/*{skills && skills.map((skill: ISkillsResponse) => (*/}
@@ -96,7 +115,7 @@ const Home: NextPage<IHomeProps> = (data) => {
 
               <h3 className={styles.title}>Experience</h3>
               <div>
-                {experience && experience.map((exp: IExperienceResponse) => (
+                {data.experience && data.experience.map((exp: IExperience) => (
                   <div className={styles.timelineItem} key={exp.frontmatter.duration}>
                     <div className={styles.leftPart}>
                       <p className={styles.timelineDuration}>{exp.frontmatter.duration}</p>
@@ -145,7 +164,7 @@ const Home: NextPage<IHomeProps> = (data) => {
               <div className={styles.dividerSpace}></div>
 
               <h3 className={styles.title}>side projects</h3>
-              {sideProjects && sideProjects.map((p: ISideProjectsResponse) => (
+              {data.sideProjects && data.sideProjects.map((p: ISideProject) => (
                 <div key={p.slug}>
                   <p><strong>{p.frontmatter.title}</strong></p>
                   <div dangerouslySetInnerHTML={{__html: p.content}}/>
@@ -173,7 +192,7 @@ const Home: NextPage<IHomeProps> = (data) => {
             </div>
             <div className={`grids ${styles.grids} ${styles.gridBody}`}>
               <div className={styles.portfolios}>
-                {portfolios && portfolios.map((portfolio: IPortfoliosResponse) => (
+                {data.portfolios && data.portfolios.map((portfolio: IPortfolio) => (
                   <div className={styles.portfolioItem} key={portfolio.frontmatter.title}>
                     <h4 className={styles.portfolioTitle}>
                       <a href={portfolio.frontmatter.url} target="_blank" rel="noreferrer">
@@ -230,43 +249,4 @@ const Home: NextPage<IHomeProps> = (data) => {
   )
 }
 
-export default Home
-
-const fetcher = (url: string) => fetch(url).then((res: Response) => res.json())
-
-const useGetExperience = (): IExperienceResponse[] => {
-  const {data, error} = useSwr('/api/experience', fetcher)
-  if (error) {
-    console.log(error)
-    return error
-  }
-  return data
-}
-
-const useGetSkills = (): ISkillsResponse[] => {
-  const {data, error} = useSwr('/api/skills', fetcher)
-  if (error) {
-    console.log(error)
-    return error
-  }
-  return data
-}
-
-
-const useGetPortfolios = (): IPortfoliosResponse[] => {
-  const {data, error} = useSwr('/api/portfolios', fetcher)
-  if (error) {
-    console.log(error)
-    return error
-  }
-  return data
-}
-
-const useGetSideProjects = (): ISideProjectsResponse[] => {
-  const {data, error} = useSwr('/api/side-projects', fetcher)
-  if (error) {
-    console.log(error)
-    return error
-  }
-  return data
-}
+export default Index
