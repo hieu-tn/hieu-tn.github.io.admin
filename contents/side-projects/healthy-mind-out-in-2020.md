@@ -5,6 +5,3 @@ title: Healthy Mind (out in 2020)
 url: http://healthymind.vn
 ---
 A microsite helps people understand and develop a healthy mind.
-
-* foo
-* bar
