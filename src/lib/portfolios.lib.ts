@@ -19,6 +19,8 @@ export const getPortfolioBySlug = (slug: string): IPortfolio => {
 export const getAllPortfolios = (): IPortfolio[] => {
   const slugs = fs.readdirSync(portfoliosDirectory)
   const portfolios = slugs.map((slug: string) => getPortfolioBySlug(slug))
-
+  portfolios.sort((a, b) => {
+    return new Date(b.frontmatter.date || '').valueOf() - new Date(a.frontmatter.date || '').valueOf()
+  })
   return portfolios
 }

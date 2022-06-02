@@ -19,6 +19,8 @@ export const getSkillBySlug = (slug: string): ISkill => {
 export const getAllSkills = (): ISkill[] => {
   const slugs = fs.readdirSync(skillsDirectory)
   const skills = slugs.map((slug: string) => getSkillBySlug(slug))
-
+  skills.sort((a, b) => {
+    return new Date(b.frontmatter.date || '').valueOf() - new Date(a.frontmatter.date || '').valueOf()
+  })
   return skills
 }

@@ -20,6 +20,8 @@ export const getExperienceBySlug = (slug: string): IExperience => {
 export const getAllExperience = (): IExperience[] => {
   const slugs = fs.readdirSync(experienceDirectory)
   const experience = slugs.map((slug: string) => getExperienceBySlug(slug))
-
+  experience.sort((a, b) => {
+    return new Date(b.frontmatter.date || '').valueOf() - new Date(a.frontmatter.date || '').valueOf()
+  })
   return experience
 }

@@ -19,6 +19,8 @@ export const getSideProjectBySlug = (slug: string): ISideProject => {
 export const getAllSideProjects = (): ISideProject[] => {
   const slugs = fs.readdirSync(sideProjectsDirectory)
   const sideProjects = slugs.map((slug: string) => getSideProjectBySlug(slug))
-
+  sideProjects.sort((a, b) => {
+    return new Date(b.frontmatter.date || '').valueOf() - new Date(a.frontmatter.date || '').valueOf()
+  })
   return sideProjects
 }
