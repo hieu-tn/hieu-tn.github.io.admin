@@ -10,6 +10,5 @@ jobDescription:
       across all modern browsers and runs smoothly on all devices
   - point: Build web site on platform like HubSpot
   - point: Implement web product using framework like Wordpress, Laravel, VueJS
-  - point: Work with database using tool like PHPMyAdmin
   - point: Deploy to server (Linux, AWS), control code versioning using git
 ---
