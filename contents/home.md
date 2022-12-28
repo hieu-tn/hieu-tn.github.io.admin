@@ -1,6 +1,7 @@
 ---
 designation: Software Engineer
-overview: A growing Software Engineer enthuses about web life cycle and how it works.
+overview: A growing Software Engineer enthuses about web application life cycle
+  and how it works.
 heroImage: ""
 summary:
   - point: 6+ years of experience in software engineering of web products
