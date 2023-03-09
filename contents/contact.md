@@ -1,5 +1,5 @@
 ---
 email: vayu411@gmail.com
-location: HCMC, Vietnam
+location: Calgary, Alberta, Canada
 phone: +84 9649 75557
 ---
