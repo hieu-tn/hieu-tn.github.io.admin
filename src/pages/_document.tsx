@@ -1,5 +1,5 @@
-import React from 'react'
-import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document'
+import React from "react"
+import Document, { DocumentContext, Head, Html, Main, NextScript } from "next/document"
 
 
 export interface IDocument {}
@@ -25,10 +25,10 @@ export default class MyDocument extends Document<IDocument> {
 
   makeClasses(): string {
     const {page} = this.props.__NEXT_DATA__
-    let classes = 'page page-'
+    let classes = "page page-"
     switch (page) {
-      case '/home':
-        classes += 'home'
+      case "/home":
+        classes += "home"
     }
     return classes
   }
@@ -37,9 +37,9 @@ export default class MyDocument extends Document<IDocument> {
     return (
       <Html>
         <Head/>
-        <body className={this.makeClasses()}>
-          <Main/>
-          <NextScript/>
+        <body className={ this.makeClasses() }>
+        <Main/>
+        <NextScript/>
         </body>
       </Html>
     )

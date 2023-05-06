@@ -1,15 +1,15 @@
-import { join } from 'path'
-import fs from 'fs'
-import matter from 'gray-matter'
-import { ISkill } from '@models/skills.models'
+import { join } from "path"
+import fs from "fs"
+import matter from "gray-matter"
+import { ISkill } from "@models/skills.models"
 
 
-const skillsDirectory = join(process.cwd(), 'contents', 'skills')
+const skillsDirectory = join(process.cwd(), "contents", "skills")
 
 export const getSkillBySlug = (slug: string): ISkill => {
-  const realSlug = slug.replace(/\.md$/, '')
-  const fullPath = join(skillsDirectory, `${realSlug}.md`)
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
+  const realSlug = slug.replace(/\.md$/, "")
+  const fullPath = join(skillsDirectory, `${ realSlug }.md`)
+  const fileContents = fs.readFileSync(fullPath, "utf8")
   const {data, content} = matter(fileContents)
   data.date = data.date.toString()
 
@@ -20,7 +20,7 @@ export const getAllSkills = (): ISkill[] => {
   const slugs = fs.readdirSync(skillsDirectory)
   const skills = slugs.map((slug: string) => getSkillBySlug(slug))
   skills.sort((a, b) => {
-    return new Date(b.frontmatter.date || '').valueOf() - new Date(a.frontmatter.date || '').valueOf()
+    return new Date(b.frontmatter.date || "").valueOf() - new Date(a.frontmatter.date || "").valueOf()
   })
   return skills
 }

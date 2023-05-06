@@ -13,7 +13,6 @@ const nextConfig = {
   //     },
   //   ]
   // },
-  webpack5: true,
   webpack: (config, {isServer}) => {
     config.module.rules.push(
       {
@@ -35,13 +34,13 @@ const nextConfig = {
   },
   images: {
     loader: 'custom',
-    minimumCacheTTL: 60 * 60,
+    // minimumCacheTTL: 60 * 60,
   },
-  experimental: {
-    images: {
-      layoutRaw: true,
-    },
-  },
+  // experimental: {
+  //   images: {
+  //     layoutRaw: true,
+  //   },
+  // },
 }
 
 module.exports = nextConfig

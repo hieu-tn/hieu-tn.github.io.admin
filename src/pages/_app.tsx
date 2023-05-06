@@ -1,10 +1,10 @@
-import React from 'react'
-import App, { AppContext, AppProps } from 'next/app'
-import Head from 'next/head'
-import Layout from '@components/Layout'
-import { getMetadata } from '@lib/metadata.lib'
-import { IMetadata } from '@models/common.models'
-import '@styles/main.scss'
+import React from "react"
+import App, { AppContext, AppProps } from "next/app"
+import Head from "next/head"
+import Layout from "@components/Layout"
+import { getMetadata } from "@lib/metadata.lib"
+import { IMetadata } from "@models/common.models"
+import "@styles/main.scss"
 
 
 MyApp.getInitialProps = async (appContext: AppContext) => {
@@ -23,14 +23,14 @@ export default function MyApp({Component, pageProps}: AppProps) {
 
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-        <title>{title}</title>
-        <meta name="description" content={description}/>
-        <meta name="keywords" content={keywords}/>
-        <meta name="author" content={author}/>
+        <title>{ title }</title>
+        <meta name="description" content={ description }/>
+        <meta name="keywords" content={ keywords }/>
+        <meta name="author" content={ author }/>
         <meta property="og:type" content="website"/>
-        <meta property="og:title" content={title}/>
-        <meta property="og:url" content={siteURL}/>
-        <meta property="og:image" content={siteURL + '/images/logo.jpg'}/>
+        <meta property="og:title" content={ title }/>
+        <meta property="og:url" content={ siteURL }/>
+        <meta property="og:image" content={ siteURL + "/images/logo.jpg" }/>
 
         <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png"/>
         <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png"/>
@@ -52,8 +52,8 @@ export default function MyApp({Component, pageProps}: AppProps) {
 
       </Head>
 
-      <Layout metadata={pageProps.metadata}>
-        <Component {...pageProps} />
+      <Layout metadata={ pageProps.metadata }>
+        <Component { ...pageProps } />
       </Layout>
 
     </>
