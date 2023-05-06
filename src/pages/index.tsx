@@ -1,5 +1,5 @@
 import type { GetStaticProps, GetStaticPropsContext, NextPage } from "next"
-import Image from "next/image"
+import Image from "next/legacy/image"
 import { IExperience } from "@models/experience.models"
 import { ISkill } from "@models/skills.models"
 import { IPortfolio } from "@models/portfolios.models"

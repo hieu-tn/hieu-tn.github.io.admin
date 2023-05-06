@@ -1,5 +1,5 @@
 import React, { SyntheticEvent, useEffect, useState } from "react"
-import Image from "next/image"
+import Image from "next/legacy/image"
 import { IHeaderProps } from "@models/common.models"
 import { customLoader, scrollToTarget } from "@lib/utils.lib"
 import styles from "@styles/components/header.module.scss"
