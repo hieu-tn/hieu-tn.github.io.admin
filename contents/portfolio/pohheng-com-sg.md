@@ -9,5 +9,6 @@ members: 1
 stacks: WordPress, VueJS, JQuery
 duties:
   - point: Converted mockups from PSD to WordPress theme from scratch
+  - point: Implemented custom Vue components
   - point: Deployed and Configured website settings to Linux server
 ---
