@@ -8,6 +8,6 @@ url: https://www.constructdigital.com
 members: 1
 stacks: HubSpot, JQuery
 duties:
-  - point: test0
-  - point: test1
+  - point: Supported to develop page templates/components on HubSpot
+  - point: Troubleshooted and investigated UI issues
 ---
