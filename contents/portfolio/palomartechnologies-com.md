@@ -9,4 +9,5 @@ members: 2
 stacks: HubSpot, JQuery
 duties:
   - point: Debugged and fixed UI issues on HubSpot
+  - point: Created reusable custom components
 ---
