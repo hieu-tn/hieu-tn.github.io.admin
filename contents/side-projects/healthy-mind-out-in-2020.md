@@ -1,6 +1,7 @@
 ---
 templateKey: sideProject
 date: 2022-06-01T16:13:10.779Z
+active: true
 title: Healthy Mind (out in 2020)
 url: https://healthymind.vn
 ---
