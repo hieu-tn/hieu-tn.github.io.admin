@@ -7,4 +7,7 @@ duration: May 2019 - Jul 2019
 url: https://www.pohheng.com.sg
 members: 1
 stacks: WordPress, VueJS, JQuery
+duties:
+  - point: Converted mockups from PSD to WordPress theme from scratch
+  - point: Deployed and Configured website settings to Linux server
 ---
