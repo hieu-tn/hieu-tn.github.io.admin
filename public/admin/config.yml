@@ -79,10 +79,18 @@ collections:
               - name: point
                 label: Point
                 widget: string
+              - name: active
+                label: Active
+                widget: boolean
+                default: true
           - name: certificates
             label: Certificates
             widget: list
             fields:
+              - name: active
+                label: Active
+                widget: boolean
+                default: true
               - name: duration
                 label: Duration
                 widget: string
@@ -138,6 +146,10 @@ collections:
         label: Publish Date
         widget: date
         required: false
+      - name: active
+        label: Active
+        widget: boolean
+        default: true
       - name: category
         label: Category
         widget: string
@@ -164,6 +176,10 @@ collections:
         label: Publish Date
         widget: date
         required: false
+      - name: active
+        label: Active
+        widget: boolean
+        default: true
       - name: place
         label: Place
         widget: string
@@ -204,6 +220,10 @@ collections:
         label: Publish Date
         widget: date
         required: false
+      - name: active
+        label: Active
+        widget: boolean
+        default: true
       - name: title
         label: Title
         widget: string
@@ -241,6 +261,10 @@ collections:
         label: Publish Date
         widget: date
         required: false
+      - name: active
+        label: Active
+        widget: boolean
+        default: true
       - name: title
         label: Title
         widget: string
