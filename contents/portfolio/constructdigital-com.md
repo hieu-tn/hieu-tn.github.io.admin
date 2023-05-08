@@ -7,4 +7,7 @@ duration: Dec 2016 - May 2019
 url: https://www.constructdigital.com
 members: 1
 stacks: HubSpot, JQuery
+duties:
+  - point: test0
+  - point: test1
 ---
