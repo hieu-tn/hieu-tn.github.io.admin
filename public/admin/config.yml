@@ -87,6 +87,10 @@ collections:
             label: Certificates
             widget: list
             fields:
+              - name: title
+                label: Title
+                widget: string
+                required: false
               - name: active
                 label: Active
                 widget: boolean
@@ -101,10 +105,6 @@ collections:
                 required: false
               - name: url
                 label: URL
-                widget: string
-                required: false
-              - name: title
-                label: Title
                 widget: string
                 required: false
               - name: description
