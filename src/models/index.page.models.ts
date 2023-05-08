@@ -22,13 +22,15 @@ export interface IHomeProps extends IPageProps {
 }
 
 export interface ICertificate {
+  title?: string
+  active: boolean
   duration?: string
   place?: string
   url?: string
-  title?: string
   description?: string
 }
 
 export interface ISummary {
   point: string
+  active: boolean
 }

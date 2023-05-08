@@ -92,6 +92,7 @@ const Index: NextPage<IHomeProps> = (data) => {
             <h3 className={ styles.title }>Summary</h3>
             <div>
               { data.summary && data.summary.map((s: ISummary) => (
+                s.active &&
                 <p key={ s.point }>- { s.point }</p>
               )) }
             </div>
@@ -101,6 +102,7 @@ const Index: NextPage<IHomeProps> = (data) => {
             <h3 className={ styles.title }>Skills</h3>
             <div className="skills-info">
               { data.skills && data.skills.map((skill: ISkill) => (
+                skill.frontmatter.active &&
                 <p key={ skill.slug }><i>- { skill.frontmatter.category }:</i> { skill.frontmatter.items }</p>
               )) }
               {/*{skills && skills.map((skill: ISkillsResponse) => (*/ }
@@ -119,6 +121,7 @@ const Index: NextPage<IHomeProps> = (data) => {
             <h3 className={ styles.title }>Experience</h3>
             <div>
               { data.experience && data.experience.map((exp: IExperience) => (
+                exp.frontmatter.active &&
                 <div className={ styles.timelineItem } key={ exp.frontmatter.duration }>
                   <div className={ styles.leftPart }>
                     <p className={ styles.timelineDuration }>{ exp.frontmatter.duration }</p>
@@ -146,6 +149,7 @@ const Index: NextPage<IHomeProps> = (data) => {
             <h3 className={ styles.title }>education</h3>
             <div>
               { data.certificates && data.certificates.map((cert: ICertificate) => (
+                cert.active &&
                 <div className={ styles.timelineItem } key={ cert.duration }>
                   <div className={ styles.leftPart }>
                     <p className={ styles.timelineDuration }>{ cert.duration }</p>
@@ -168,6 +172,7 @@ const Index: NextPage<IHomeProps> = (data) => {
 
             <h3 className={ styles.title }>side projects</h3>
             { data.sideProjects && data.sideProjects.map((p: ISideProject) => (
+              p.frontmatter.active &&
               <div key={ p.slug }>
                 <p><strong>{ p.frontmatter.title }</strong></p>
                 <div dangerouslySetInnerHTML={ {__html: p.content} }/>
@@ -176,6 +181,15 @@ const Index: NextPage<IHomeProps> = (data) => {
                     { p.frontmatter.url }
                   </a>
                 </p>
+                { p.frontmatter.duties &&
+                <div className="">
+                  <ul>
+                    { p.frontmatter.duties.map(duty => (
+                      <li key={ duty.point }>{ duty.point }</li>
+                    )) }
+                  </ul>
+                </div>
+                }
               </div>
             )) }
 
@@ -196,6 +210,7 @@ const Index: NextPage<IHomeProps> = (data) => {
           <div className={ `grids ${ styles.grids } ${ styles.gridBody }` }>
             <div className={ styles.portfolios }>
               { data.portfolios && data.portfolios.map((portfolio: IPortfolio) => (
+                portfolio.frontmatter.active &&
                 <div className={ styles.portfolioItem } key={ portfolio.frontmatter.title }>
                   <h4 className={ styles.portfolioTitle }>
                     <a href={ portfolio.frontmatter.url } target="_blank" rel="noreferrer">
@@ -205,6 +220,15 @@ const Index: NextPage<IHomeProps> = (data) => {
                   <p className={ styles.portfolioDuration }><i>{ portfolio.frontmatter.duration }</i></p>
                   <p><i>Team members:</i> { portfolio.frontmatter.members }</p>
                   <p><i>Stacks:</i> { portfolio.frontmatter.stacks }</p>
+                  { portfolio.frontmatter.duties &&
+                  <div className={ styles.portfolioDuties }>
+                    <ul>
+                      { portfolio.frontmatter.duties.map(duty => (
+                        <li key={ duty.point }>{ duty.point }</li>
+                      )) }
+                    </ul>
+                  </div>
+                  }
                   {/*<PostContent content={portfolio.html} className="portfolio__description" />*/ }
                 </div>
               )) }

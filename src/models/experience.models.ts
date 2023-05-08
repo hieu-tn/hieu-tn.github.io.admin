@@ -2,6 +2,7 @@ export interface IExperience {
   slug: string
   frontmatter: {
     templateKey: string
+    active: boolean
     date?: string
     duration?: string
     place: string

@@ -196,17 +196,18 @@
 
   .portfolioItem {
     margin-bottom: 3rem;
+    width: 100%;
 
-    @include respond-to(sm) {
-      width: 49%;
-      margin-left: 2%;
-    }
+    //@include respond-to(sm) {
+    //  width: 49%;
+    //  margin-left: 2%;
+    //}
 
-    &:nth-child(2n + 1) {
-      @include respond-to(sm) {
-        margin-left: 0;
-      }
-    }
+    //&:nth-child(2n + 1) {
+    //  @include respond-to(sm) {
+    //    margin-left: 0;
+    //  }
+    //}
 
     p {
       margin-bottom: 0;
@@ -218,6 +219,10 @@
 
     .portfolioDuration {
       font-size: 1.5rem;
+    }
+
+    .portfolioDuties {
+      margin-top: 1rem;
     }
   }
 }
