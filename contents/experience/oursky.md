@@ -1,6 +1,7 @@
 ---
 templateKey: experience
 date: 2020-01-12T22:07:29.189Z
+active: true
 place: Oursky
 duration: Jan 2020 - Aug 2020
 url: https://www.oursky.com
