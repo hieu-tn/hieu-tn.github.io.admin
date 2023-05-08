@@ -7,4 +7,6 @@ duration: Aug 2017 - Nov 2017
 url: https://www.palomartechnologies.com
 members: 2
 stacks: HubSpot, JQuery
+duties:
+  - point: Debugged and fixed UI issues on HubSpot
 ---
