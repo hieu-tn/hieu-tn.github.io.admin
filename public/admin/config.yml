@@ -1,6 +1,6 @@
 backend:
-#  name: git-gateway # prod
-  name: test-repo # local
+  name: git-gateway # prod
+#  name: test-repo # local
   branch: master # Branch to update (optional; defaults to master)
 media_folder: public/images
 public_folder: images

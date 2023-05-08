@@ -38,8 +38,8 @@ export default class MyDocument extends Document<IDocument> {
       <Html>
         <Head/>
         <body className={ this.makeClasses() }>
-        <Main/>
-        <NextScript/>
+          <Main/>
+          <NextScript/>
         </body>
       </Html>
     )
