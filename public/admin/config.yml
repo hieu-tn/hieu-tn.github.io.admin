@@ -243,6 +243,13 @@ collections:
         label: Stacks
         widget: string
         required: false
+      - name: duties
+        label: Duties
+        widget: list
+        fields:
+          - name: point
+            label: Point
+            widget: string
 
   - name: sideProjects
     label: Side Projects
@@ -276,3 +283,10 @@ collections:
         label: Content
         widget: markdown
         required: false
+      - name: duties
+        label: Duties
+        widget: list
+        fields:
+          - name: point
+            label: Point
+            widget: string
