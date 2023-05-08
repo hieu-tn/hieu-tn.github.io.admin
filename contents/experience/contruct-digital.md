@@ -1,6 +1,7 @@
 ---
 templateKey: experience
 date: 2016-08-16T22:00:01.815Z
+active: true
 place: Contruct Digital
 duration: Aug 2016 - Jan 2020
 url: https://www.constructdigital.com
