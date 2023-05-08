@@ -4,7 +4,7 @@ backend:
   branch: master # Branch to update (optional; defaults to master)
 media_folder: public/images
 public_folder: images
-publish_mode: editorial_workflow
+#publish_mode: editorial_workflow
 collections:
 
   - name: pages
