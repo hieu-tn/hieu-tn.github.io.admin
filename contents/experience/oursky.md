@@ -7,7 +7,7 @@ duration: Jan 2020 - Aug 2020
 url: https://www.oursky.com
 designation: Full Stack Web Developer
 jobDescription:
-  - point: Built page templates using Next.js and Bootstrap
+  - point: Built page templates using React and Bootstrap
   - point: Developed distributed RESTful APIs using Django and custom Wagtail
       features for content population
   - point: Managed deployment process to AWS by Docker and Kubernetes
