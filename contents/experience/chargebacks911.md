@@ -7,7 +7,8 @@ duration: Mar 2022 - present
 url: https://chargebacks911.com
 designation: Software Engineer
 jobDescription:
-  - point: Maintaining automatic jobs with Selenium and Python
-  - point: Developing new features for internal tools to manage data processing and
-      reports
+  - point: Maintaining automatic processors using Python and Selenium
+  - point: Developing new features for internal tools using Laravel
+  - point: Building and enhancing the Risk and Disputes Management System, bug
+      resolution
 ---
