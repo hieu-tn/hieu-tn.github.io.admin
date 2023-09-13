@@ -4,7 +4,7 @@ overview: A growing Software Engineer enthuses about web application life cycle
   and how it works.
 heroImage: ""
 summary:
-  - point: 6+ years of experience in software engineering of web products
+  - point: 7+ years of experience in software engineering of web products
     active: true
   - point: 2+ year of experience in DevOps field
     active: true
