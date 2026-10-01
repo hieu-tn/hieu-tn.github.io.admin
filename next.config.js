@@ -32,7 +32,6 @@ const nextConfig = {
     }
     return config
   },
-  output: 'export',
   images: {
     loader: 'custom',
     // minimumCacheTTL: 60 * 60,

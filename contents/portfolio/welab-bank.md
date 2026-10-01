@@ -1,5 +1,4 @@
 ---
-period: Feb 2020 - Aug 2020
 templateKey: portfolio
 date: 2020-02-05T11:00:40.815Z
 active: true
