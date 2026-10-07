@@ -2,6 +2,7 @@ import React from "react"
 import Header from "./Header"
 import Footer from "./Footer"
 import { ILayoutProps } from "@models/common.models"
+import AgentChat from "@components/AgentChat";
 
 
 const Layout = ({metadata, children}: ILayoutProps) => {
@@ -14,6 +15,7 @@ const Layout = ({metadata, children}: ILayoutProps) => {
       </main>
 
       <Footer/>
+      <AgentChat/>
     </>
   )
 }
